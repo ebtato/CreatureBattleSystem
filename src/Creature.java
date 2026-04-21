@@ -2,6 +2,7 @@ public class Creature {
     public float health;
     public String name;
     public String action;
+    public boolean isUser = false;
 
 
     // Returns the damage done by the Creature

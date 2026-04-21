@@ -3,13 +3,23 @@ public class MysticCreature extends Creature{
     @Override
     public float attack(){
 
+        int choice;
+
+        if(!isUser) {
+
+            choice = Rand.randomInt(0, 100);
+        }
+        else{
+
+            Input.getUserString("Press enter to attack.");
+            choice = Rand.randomInt(0,100);
+        }
+
         if(Rand.randomInt(0,10)<2){
 
             action = name + " missed!";
             return 0;
         }
-
-        int choice = Rand.randomInt(0,100);
 
         if(choice < 50){
 
