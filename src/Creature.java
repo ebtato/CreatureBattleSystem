@@ -1,8 +1,42 @@
 public class Creature {
-    public float health;
-    public String name;
-    public String action;
-    public boolean isUser = false;
+    private float health;
+    private String name;
+    private String action;
+    private boolean isUser = false;
+
+    //public methods
+    public void setAction(String msg){
+
+        this.action = msg;
+    }
+
+    public String getName(){
+
+        return name;
+    }
+
+    public void takeDamage(float damage){
+
+        health -= damage;
+    }
+
+    public float getHealth(){
+
+        return health;
+    }
+
+    public boolean isUser() {
+
+        return isUser;
+    }
+
+    //constructor
+    public Creature(float health, String name, boolean isUser){
+
+        this.health = health;
+        this.name = name;
+        this.isUser = isUser;
+    }
 
 
     // Returns the damage done by the Creature
@@ -43,4 +77,6 @@ public class Creature {
     public String toString() {
         return getClass() + "{name: " + name + ", health: " + health + "}";
     }
+
+
 }

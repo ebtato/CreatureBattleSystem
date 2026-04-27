@@ -1,11 +1,16 @@
 public class MysticCreature extends Creature{
 
+    public MysticCreature(float health, String name, boolean isUser){
+
+        super(health, name, isUser);
+    }
+
     @Override
     public float attack(){
 
         int choice;
 
-        if(!isUser) {
+        if(!isUser()) {
 
             choice = Rand.randomInt(0, 100);
         }
@@ -17,32 +22,32 @@ public class MysticCreature extends Creature{
 
         if(Rand.randomInt(0,10)<2){
 
-            action = name + " missed!";
+            setAction(getName() + " missed!");
             return 0;
         }
 
         if(choice < 50){
 
             float power = Rand.randomFloat(10,20);
-            action = name + " used fireball with power " + power + "!";
+            setAction(getName() + " used fireball with power " + power + "!");
             return power;
         }
         else if(choice < 75){
 
             float power = Rand.randomFloat(15,25);
-            action = name + " used lightning bolt with power " + power + "!";
+            setAction(getName() + " used lightning bolt with power " + power + "!");
             return power;
         }
         else if(choice < 90){
 
             float power = Rand.randomFloat(20,30);
-            action = name + " cast throw spell with power " + power + "!";
+            setAction(getName() + " cast throw spell with power " + power + "!");
             return power;
         }
         else{
 
             float power = Rand.randomFloat(30,40);
-            action = name + " summoned demons with power " + power + "!";
+            setAction(getName() + " summoned demons with power " + power + "!");
             return power;
         }
     }
@@ -57,20 +62,20 @@ public class MysticCreature extends Creature{
             if(choice < 9){
 
                 incomingPower = incomingPower * 0.8f;
-                action = name + " used force field and reduced damage taken to " + incomingPower;
+                setAction(getName() + " used force field and reduced damage taken to " + incomingPower);
             }
             else{
 
                 incomingPower = incomingPower * 0.3f;
-                action = name + " manifested divine intervention and reduced damage taken to " + incomingPower;
+                setAction(getName() + " manifested divine intervention and reduced damage taken to " + incomingPower);
             }
 
         }
         else
         {
-            action = name + " did not defend.";
+            setAction(getName() + " did not defend.");
         }
 
-        health -= incomingPower;
+        takeDamage(incomingPower);
     }
 }

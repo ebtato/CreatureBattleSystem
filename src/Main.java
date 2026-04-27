@@ -2,15 +2,9 @@ public class Main {
     public static void main(String[] args) {
 
         // set up the creatures
-        MysticCreature a = new MysticCreature();
-        WaterCreature b = new WaterCreature();
-        NatureCreature c = new NatureCreature();
-        a.name = "Galdour";
-        a.health = 100;
-        b.name = "Hydrion";
-        b.health = 100;
-        c.name = "Foliare";
-        c.health = 100;
+        MysticCreature a = new MysticCreature(100, "Galdour", false);
+        WaterCreature b = new WaterCreature(100, "Hydrion", false);
+        NatureCreature c = new NatureCreature(100, "Foliare", false);
 
         // set up the battle
         BattleSystem battleSystem = new BattleSystem();
@@ -30,15 +24,15 @@ public class Main {
             switch(userChoice){
 
                 case 1:
-                    uc = new WaterCreature();
+                    uc = new WaterCreature(100, name, true);
                     break;
 
                 case 2:
-                    uc = new NatureCreature();
+                    uc = new NatureCreature(100, name, true);
                     break;
 
                 case 3:
-                    uc = new MysticCreature();
+                    uc = new MysticCreature(100, name, true);
                     break;
 
                 default:
@@ -47,10 +41,6 @@ public class Main {
             }
         }
         while(userChoice < 1 || userChoice > 3);
-
-        uc.name = name;
-        uc.health = 100;
-        uc.isUser = true;
 
         int choice = Rand.randomInt(0,3);
         switch(choice){

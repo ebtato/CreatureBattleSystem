@@ -1,11 +1,16 @@
 public class WaterCreature extends Creature{
 
+    public WaterCreature(float health, String name, boolean isUser){
+
+        super(health, name, isUser);
+    }
+
     @Override
     public float attack(){
 
         int choice;
 
-        if(!isUser) {
+        if(!isUser()) {
 
             choice = Rand.randomInt(0, 100);
         }
@@ -17,32 +22,32 @@ public class WaterCreature extends Creature{
 
         if(Rand.randomInt(0,10)<2){
 
-            action = name + " missed!";
+            setAction(getName() + " missed!");
             return 0;
         }
 
         if(choice < 50){
 
             float power = Rand.randomFloat(10,20);
-            action = name + " used soak with power " + power + "!";
+            setAction(getName() + " used soak with power " + power + "!");
             return power;
         }
         else if(choice < 75){
 
             float power = Rand.randomFloat(15,25);
-            action = name + " used flash flood with power " + power + "!";
+            setAction(getName() + " used flash flood with power " + power + "!");
             return power;
         }
         else if(choice < 90){
 
             float power = Rand.randomFloat(20,30);
-            action = name + " summoned monsoon with power " + power + "!";
+            setAction(getName() + " summoned monsoon with power " + power + "!");
             return power;
         }
         else{
 
             float power = Rand.randomFloat(30,40);
-            action = name + " summoned tsunami with power " + power + "!";
+            setAction(getName() + " summoned tsunami with power " + power + "!");
             return power;
         }
     }
@@ -57,20 +62,20 @@ public class WaterCreature extends Creature{
             if(choice < 9){
 
                 incomingPower = incomingPower * 0.8f;
-                action = name + " used ice sheet and reduced damage taken to " + incomingPower;
+                setAction(getName() + " used ice sheet and reduced damage taken to " + incomingPower);
             }
             else{
 
                 incomingPower = incomingPower * 0.3f;
-                action = name + " used iceberg and reduced damage taken to " + incomingPower;
+                setAction(getName() + " used iceberg and reduced damage taken to " + incomingPower);
             }
 
         }
         else
         {
-            action = name + " did not defend.";
+            setAction(getName() + " did not defend.");
         }
 
-        health -= incomingPower;
+        takeDamage(incomingPower);
     }
 }
